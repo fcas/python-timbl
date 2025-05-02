@@ -307,6 +307,9 @@ class TimblClassifier(object):
                 yield " ".join(segments[:endfvec - 2]).split(self.delimiter), segments[endfvec - 2], segments[endfvec - 1], distribution, distance
         f.close()
 
+    def bestNeighbours(self):
+        return self.api.bestNeighbours()
+
     def _parsedistribution(self, instance, start=0, end =None):
         dist = {}
         i = start + 1
