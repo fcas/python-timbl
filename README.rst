@@ -1,6 +1,3 @@
-.. image:: http://applejack.science.ru.nl/lamabadge.php/python-timbl
-   :target: http://applejack.science.ru.nl/languagemachines/
-
 .. image:: https://www.repostatus.org/badges/latest/active.svg
    :alt: Project Status: Active – The project has reached a stable, usable state and is being actively developed.
    :target: https://www.repostatus.org/#active
