@@ -310,6 +310,15 @@ class TimblClassifier(object):
     def bestNeighbours(self):
         return self.api.bestNeighbours()
 
+    def bestNeighbors(self):
+        return self.api.bestNeighbours()
+
+    def settings(self):
+        return self.api.settings()
+
+    def options(self):
+        return self.api.options()
+
     def _parsedistribution(self, instance, start=0, end =None):
         dist = {}
         i = start + 1
