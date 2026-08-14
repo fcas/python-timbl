@@ -53,7 +53,8 @@ if os.path.exists("testfile"): #delete if it already exists
     os.unlink("testfile")
 
 
-classifier = timbl.TimblClassifier("wsd-bank", "-a 0 -k 1" )
+
+classifier = timbl.TimblClassifier("wsd-bank", "-a 0 -k 1 +v n+di+k" ) #add some extra verbosity flags
 classifier.load()
 classifier.addinstance("testfile", (1,0,0),'financial' ) #addinstance can be used to add instances to external files (use append() for training)
 classifier.addinstance("testfile", (0,1,0),'furniture' )
@@ -63,6 +64,7 @@ classifier.addinstance("testfile", (1,1,0),'geograpic' ) #this one will be wrong
 classifier.test("testfile")
 
 print("Accuracy: ", classifier.getAccuracy())
+print("Best neighbours: ", classifier.bestNeighbours()) #this only works with the extra verbosity flags and only if python-timbl is compiled with gcc
 
 
 

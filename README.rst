@@ -1,6 +1,3 @@
-.. image:: http://applejack.science.ru.nl/lamabadge.php/python-timbl
-   :target: http://applejack.science.ru.nl/languagemachines/
-
 .. image:: https://www.repostatus.org/badges/latest/active.svg
    :alt: Project Status: Active – The project has reached a stable, usable state and is being actively developed.
    :target: https://www.repostatus.org/#active
@@ -38,60 +35,29 @@ TiMBL.
 Installation
 ============
 
-python-timbl is distributed as part of **LaMachine**
-(https://proycon.github.io/LaMachine), which significantly simplifies
-compilation and installation. The remainder of the instructions in this section
-refer to manual compilation and installation.
+In a Python virtual environment, run:
+
+```
+pip install python3-timbl
+```
+
+Note that on macOS, wheel packages are currently only available for Python
+3.13, as this the the Python version Homebrew uses in linking libboost-python.
+
+If no wheels (binary packages) are available for your system, then this will
+attempt to compile from source. If that is the case, a number of dependencies
+are required:
 
 python-timbl depends on two external packages, which must have been built
 and/or installed on your system in order to successfully build python-timbl.
 The first is TiMBL itself; download its tarball from TiMBL's homepage and
-follow the installation instructions, recent Ubuntu/Debian users will find
-timbl in their distribution's package repository. In the remainder of this
-section, it is assumed that ``$TIMBL_HEADERS`` points to the directory that
-contains ``timbl/TimblAPI.h``, and ``$TIMBL_LIBS`` the directory that has
-contains the Timbl libraries. Note that Timbl itself depends on additional
-dependencies.
-
-The second prerequisite is Boost.Python, a library that facilitates writing
+follow the installation instructions.  The second prerequisite is Boost.Python, a library that facilitates writing
 Python extension modules in C++. Many Linux distributions come with prebuilt
 packages of Boost.Python. If so, install this package; on Ubuntu/Debian this
-can be done as follows::
+can be done as follows.
 
 	$ sudo apt-get install libboost-python libboost-python-dev
 
-If not, refer to the `Boost installation instructions`_ to build and install
-Boost.Python manually. In the remainder of this section, let ``$BOOST_HEADERS``
-refer to the directory that contains the Boost header files, and
-``$BOOST_LIBS`` to the directory that contains the Boost library files. If you
-installed Boost.Python with your distribution's package manager, these
-directories are probably ``/usr/include`` and ``/usr/lib`` respectively.
-
-.. _Boost installation instructions: http://www.boost.org/more/getting_started.html
-
-
-If both prerequisites have been installed on your system, python-timbl can be
-obtained through github::
-
-	$ git clone git://github.com/proycon/python-timbl.git
-	$ cd python-timbl
-
-and can then be built and installed with the following command::
-
-        $ sudo python3 setup.py \
-               build_ext --boost-include-dir=$BOOST_HEADERS \
-                         --boost-library-dir=$BOOST_LIBS \
-                         --timbl-include-dir=$TIMBL_HEADERS  \
-                         --timbl-library-dir=$TIMBL_LIBS \
-               install --prefix=/dir/to/install/in
-
-This is the verbose variant, if default locations are used then the following may suffice already::
-
-        $ sudo python setup3.py install
-
-
-The ``--prefix`` option to the install command denotes the directory in which the module is to be installed. If you have the appropriate system permissions, you can leave out this option. The module will then be installed in the Python system tree. Otherwise, make sure that the installation directory is in the module search path of your Python
-system.
 
 Usage
 =======
